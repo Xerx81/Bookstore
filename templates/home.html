@@ -4,6 +4,290 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <h1>This is our Homepage</h1>
-    <img class="bookcover" src="{% static 'images/dfp.jpg' %}">
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Discover Your Next Great Read</h1>
+        <p>Explore our vast collection of books from bestsellers to hidden gems. Find stories that inspire, educate, and entertain.</p>
+        <a href="{% url 'book_list' %}" class="btn btn-primary btn-lg me-2">Shop Now</a>
+        <a href="{% url 'about' %}" class="btn btn-outline-light btn-lg">Learn More</a>
+    </div>
+</section>
+
+<!-- Featured Books Section -->
+<section class="featured-section">
+    <div class="container">
+        <h2 class="section-title">Featured Books</h2>
+        <div class="scroll-wrapper">
+            <button class="scroll-button left">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <div class="cards-container">
+                {% for book in book_list %}
+                <div class="card book-card">
+                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="book-price">${{ book.price }}</span>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="scroll-button right">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'book_list' %}" class="btn btn-outline-primary">View All Featured Books</a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section bg-light">
+    <div class="container">
+        <h2 class="section-title">Browse Categories</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/fiction_don_quixote.jpg' %}" class="img-fluid w-100 h-100" alt="Fiction Category">
+                    <div class="category-overlay">
+                        <h3>Fiction</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/non_fiction.jpg' %}" class="img-fluid w-100 h-100" alt="Non-Fiction Category">
+                    <div class="category-overlay">
+                        <h3>Non-Fiction</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/mystery.png' %}" class="img-fluid w-100 h-100" alt="Mystery Category">
+                    <div class="category-overlay">
+                        <h3>Mystery</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/sci_fi.jpg' %}" class="img-fluid w-100 h-100" alt="Science Fiction Category">
+                    <div class="category-overlay">
+                        <h3>Science Fiction</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/biography.jpg' %}" class="img-fluid w-100 h-100" alt="Biography Category">
+                    <div class="category-overlay">
+                        <h3>Biography</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="category-card">
+                    <img src="{% static 'images/children.jpg' %}" class="img-fluid w-100 h-100" alt="Children's Books Category">
+                    <div class="category-overlay">
+                        <h3>Children's Books</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bestsellers Section -->
+<section class="bestsellers-section">
+    <div class="container">
+        <h2 class="section-title">Bestsellers</h2>
+        <div class="scroll-wrapper">
+            <button class="scroll-button left">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <div class="cards-container">
+                {% for book in book_list %}
+                <div class="card book-card">
+                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="book-price">${{ book.price }}</span>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="scroll-button right">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonial-section">
+    <div class="container">
+        <h2 class="section-title text-white">What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>"I've been shopping here for years. Their selection is unmatched and the website makes finding new books so easy!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Customer Photo">
+                        <div>
+                            <h5 class="mb-0">Sarah Johnson</h5>
+                            <small class="text-white-50">Book Lover</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>"Fast shipping, great prices, and amazing customer service. I found books here that I couldn't find anywhere else!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Customer Photo">
+                        <div>
+                            <h5 class="mb-0">Michael Chen</h5>
+                            <small class="text-white-50">Avid Reader</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>"The recommendations are spot-on! It's like having a personal librarian who knows exactly what you'll love."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Customer Photo">
+                        <div>
+                            <h5 class="mb-0">Emma Rodriguez</h5>
+                            <small class="text-white-50">Book Collector</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Arrivals Section -->
+<section class="featured-section bg-light">
+    <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <div class="scroll-wrapper">
+            <button class="scroll-button left">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <div class="cards-container">
+                {% for book in book_list %}
+                <div class="card book-card">
+                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <span class="badge bg-danger mb-2">New</span>
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="book-price">${{ book.price }}</span>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="scroll-button right">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <h2>Join Our Newsletter</h2>
+                <p class="lead mb-4">Get the latest updates, book recommendations, and exclusive offers delivered straight to your inbox.</p>
+                <form class="row g-3 justify-content-center">
+                    <div class="col-md-8">
+                        <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5>Literary Haven</h5>
+                <p>Your destination for the best books across all genres. We are passionate about literature and committed to bringing you the finest reading experience.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <h5>Shop</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Featured</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <h5>Categories</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Fiction</a></li>
+                    <li><a href="#">Non-Fiction</a></li>
+                    <li><a href="#">Science Fiction</a></li>
+                    <li><a href="#">Mystery</a></li>
+                    <li><a href="#">Biography</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <h5>About Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5>Help</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock content %}

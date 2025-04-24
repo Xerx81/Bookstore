@@ -1,13 +1,304 @@
+/* Home */
+:root {
+    --primary-color: #1a3c5a;
+    --secondary-color: #f8f9fa;
+    --accent-color: #e63946;
+    --text-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    min-height: 75rem;
-    padding-top: 4.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
 }
 
-h1 {
-    color: red;
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.bookcover {
-    height: 300px;
-    width: auto;
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #1a3c5a 0%, #2a5f8a 50%, #3a7ca9 100%);
+    color: white;
+    text-align: center;
+    padding: 7rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.featured-section, .categories-section, .bestsellers-section {
+    padding: 3rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* Container that holds the arrows and the scrollable cards */
+.scroll-wrapper {
+    position: relative;
+    padding: 1rem 3.2rem; /* Adjust to prevent content from being under the arrows */
+}
+/* Flex container for horizontal scroll (hidden scrollbar) */
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 1rem 0rem;
+}
+/* Hide scrollbar in WebKit based browsers and Firefox */
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+.cards-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+/* Style for the individual book cards */
+.book-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.book-card img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background-color: #f0f0f0;
+}
+.book-card .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+/* Clamp title to 2 lines */
+.book-card .card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
+}
+/* Ensure bottom area pushes to the bottom */
+.book-card .d-flex {
+    margin-top: auto;
+}
+/* Arrow buttons */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.scroll-button:focus {
+    outline: none;
+}
+.scroll-button.left {
+    left: 0.5rem;
+}
+.scroll-button.right {
+    right: 0.5rem;
+}
+
+.category-card {
+    position: relative;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: scale(1.03);
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.category-overlay h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.testimonial-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4rem 0;
+}
+
+.testimonial-card {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+}
+
+.testimonial-card:before {
+    content: "\201C";
+    font-size: 5rem;
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: Georgia, serif;
+}
+
+.cta-section {
+    padding: 4rem 0;
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #d62c3b;
+    border-color: #d62c3b;
+}
+
+.btn-outline-light {
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3rem 0 2rem;
+}
+
+.footer h5 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer ul li a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+    color: white;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 5rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
 }
