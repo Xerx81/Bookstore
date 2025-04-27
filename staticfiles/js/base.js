@@ -1,14 +1,16 @@
-const scrollLeftBtn = document.getElementById('scrollLeft');
-const scrollRightBtn = document.getElementById('scrollRight');
-const cardsContainer = document.getElementById('cardsContainer');
+document.querySelectorAll('.scroll-wrapper').forEach(wrapper => {
+    const leftBtn = wrapper.querySelector('.scroll-button.left');
+    const rightBtn = wrapper.querySelector('.scroll-button.right');
+    const container = wrapper.querySelector('.cards-container');
 
-// Adjust scroll amount as needed
-const scrollAmount = 300;
+    // Set the desired scroll amount (in pixels)
+    const scrollAmount = 500;
 
-scrollLeftBtn.addEventListener('click', () => {
-    cardsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-});
+    leftBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
 
-scrollRightBtn.addEventListener('click', () => {
-    cardsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    rightBtn.addEventListener('click', () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
 });

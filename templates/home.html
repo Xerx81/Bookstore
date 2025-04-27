@@ -25,7 +25,11 @@
             <div class="cards-container">
                 {% for book in book_list %}
                 <div class="card book-card">
+                    {% if book.cover %}
                     <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    {% else %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ book.title }}</h5>
                         <p class="card-text text-muted">{{ book.author }}</p>
@@ -117,7 +121,11 @@
             <div class="cards-container">
                 {% for book in book_list %}
                 <div class="card book-card">
+                    {% if book.cover %}
                     <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    {% else %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ book.title }}</h5>
                         <p class="card-text text-muted">{{ book.author }}</p>
@@ -194,7 +202,11 @@
             <div class="cards-container">
                 {% for book in book_list %}
                 <div class="card book-card">
+                    {% if book.cover %}
                     <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                    {% else %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                    {% endif %}
                     <div class="card-body">
                         <span class="badge bg-danger mb-2">New</span>
                         <h5 class="card-title">{{ book.title }}</h5>

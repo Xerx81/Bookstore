@@ -91,6 +91,7 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
 /* Style for the individual book cards */
 .book-card {
     transition: transform 0.3s, box-shadow 0.3s;
@@ -103,7 +104,9 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    cursor: pointer;
 }
+
 .book-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);

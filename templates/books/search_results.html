@@ -1,14 +1,110 @@
 {% extends "_base.html" %}
-
-{% block title %}Search{% endblock title %}
-
+{% load static %}
+{% block title %}Search Results{% endblock title %}
+{% block css %}<link rel="stylesheet" href="{% static "css/search.css" %}">{% endblock css %}
 {% block content %}
-    <h1>Search Results</h1>
-    {% for book in book_list %}
-        <div>
-            <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
-            <p>Author: {{ book.author }}</p>
-            <p>Price: {{ book.price }}</p>
+<div class="search-container">
+    <!-- Search Hero Section -->
+    <section class="search-hero">
+        <div class="container">
+            <h1>Search Results</h1>
         </div>
-    {% endfor %}
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search-results">
+        <div class="container">
+            {% if book_list %}
+            <div class="search-summary">
+                <p>
+                Found
+                <span class="result-count">{{ book_list.count }}</span>
+                {% if book_list.count < 2 %}
+                result
+                {% else %}
+                results
+                {% endif %}
+                for "<span class="search-term">{{ query }}</span>"
+                </p>
+            </div>
+            {% endif %}
+
+            {% if book_list %}
+            <div class="filter-sort-bar">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="filters">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                Filter by Category
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">All Categories</a></li>
+                                <li><a class="dropdown-item" href="#">Fiction</a></li>
+                                <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+                                <li><a class="dropdown-item" href="#">Science Fiction</a></li>
+                                <li><a class="dropdown-item" href="#">Mystery</a></li>
+                                <li><a class="dropdown-item" href="#">Biography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sort d-flex justify-content-md-end mt-3 mt-md-0">
+                            <select class="form-select" aria-label="Sort by">
+                                <option selected>Sort by: Relevance</option>
+                                <option value="1">Price: Low to High</option>
+                                <option value="2">Price: High to Low</option>
+                                <option value="3">Title: A to Z</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if book_list %}
+            <div class="container my-5">
+                <div class="row g-4">
+                    {% for book in book_list %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card book-card">
+                            {% if book.cover %}
+                            <img src="{{ book.cover.url }}" alt="Book Cover" />
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                                <p class="card-text text-muted">{{ book.author }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="book-price">${{ book.price }}</span>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="fa fa-shopping-cart me-1"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% else %}
+            <div class="no-results">
+                <div class="text-center py-5">
+                    <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                    <h3>No results found</h3>
+                    <p class="text-muted">We couldn't find any books matching "{{ query }}"</p>
+                    <div class="suggestions mt-4">
+                        <h5>Suggestions:</h5>
+                        <ul class="list-unstyled">
+                            <li>Check your spelling</li>
+                            <li>Try using more general keywords</li>
+                            <li>Try different keywords</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Browse All Books</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
 {% endblock content %}
