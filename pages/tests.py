@@ -1,10 +1,10 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import resolve, reverse 
 
 from .views import HomePageView, AboutPageView
 
 
-class HomePageTests(SimpleTestCase):
+class HomePageTests(TestCase):
     def setUp(self):
         url = reverse("home")
         self.response = self.client.get(url)
@@ -16,17 +16,14 @@ class HomePageTests(SimpleTestCase):
         self.assertTemplateUsed(self.response, "home.html")
 
     def test_homepage_contains_correct_html(self):
-        self.assertContains(self.response, "Homepage")
-
-    def test_homepage_does_not_contain_incorrect_html(self):
-        self.assertNotContains(self.response, "I should not be on the page.")
+        self.assertContains(self.response, "Featured Books")
 
     def test_homepage_url_resolves_homepage_view(self):
         view = resolve("/")
         self.assertEqual(view.func.__name__, HomePageView.as_view().__name__)
 
 
-class AboutPageTests(SimpleTestCase):
+class AboutPageTests(TestCase):
     def setUp(self):
         url = reverse("about")
         self.response = self.client.get(url)

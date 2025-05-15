@@ -152,8 +152,9 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_FIELDS = [
     "email*",
     "password1*",
+    "password2*",
 ]
-ACCOUNT_LOGIN_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
 
 # django-debug-toolbar

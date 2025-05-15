@@ -30,45 +30,13 @@
             {% endif %}
 
             {% if book_list %}
-            <div class="filter-sort-bar">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="filters">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                Filter by Category
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">All Categories</a></li>
-                                <li><a class="dropdown-item" href="#">Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Science Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Mystery</a></li>
-                                <li><a class="dropdown-item" href="#">Biography</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="sort d-flex justify-content-md-end mt-3 mt-md-0">
-                            <select class="form-select" aria-label="Sort by">
-                                <option selected>Sort by: Relevance</option>
-                                <option value="1">Price: Low to High</option>
-                                <option value="2">Price: High to Low</option>
-                                <option value="3">Title: A to Z</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            {% if book_list %}
             <div class="scroll-wrapper">
                 <button class="scroll-button left">
                     <i class="fa fa-chevron-left"></i>
                 </button>
                 <div class="cards-container">
                     {% for book in book_list %}
-                    <div class="card book-card">
+                    <a class="card book-card" style="text-decoration: none; color: inherit" href="{% url 'book_detail' book.id %}">
                         {% if book.cover %}
                         <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
                         {% else %}
@@ -84,7 +52,7 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     {% endfor %}
                 </div>
                 <button class="scroll-button right">

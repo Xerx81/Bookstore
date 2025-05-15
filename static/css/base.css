@@ -96,7 +96,6 @@ body {
 .book-card {
     transition: transform 0.3s, box-shadow 0.3s;
     flex: 0 0 auto; /* Prevent flex items from shrinking */
-    width: 250px;
     border-radius: 8px;
     overflow: hidden;
     border: none;
@@ -105,6 +104,7 @@ body {
     flex-direction: column;
     background-color: #fff;
     cursor: pointer;
+    width: 250px;
 }
 
 .book-card:hover {
@@ -118,12 +118,14 @@ body {
     display: block;
     background-color: #f0f0f0;
 }
+
 .book-card .card-body {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1rem;
 }
+
 /* Clamp title to 2 lines */
 .book-card .card-title {
     display: -webkit-box;
@@ -133,10 +135,12 @@ body {
     text-overflow: ellipsis;
     margin-bottom: 0.5rem;
 }
+
 /* Ensure bottom area pushes to the bottom */
 .book-card .d-flex {
     margin-top: auto;
 }
+
 /* Arrow buttons */
 .scroll-button {
     position: absolute;
@@ -154,6 +158,7 @@ body {
     justify-content: center;
     z-index: 10;
 }
+
 .scroll-button:focus {
     outline: none;
 }

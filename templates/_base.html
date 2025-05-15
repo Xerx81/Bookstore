@@ -30,18 +30,16 @@
                                 Categories
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Science Fiction</a></li>
-                                <li><a class="dropdown-item" href="#">Mystery</a></li>
-                                <li><a class="dropdown-item" href="#">Biography</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=fiction">Fiction</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=non_fiction">Non-Fiction</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=sci_fi">Science Fiction</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=mystery">Mystery</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=biography">Biography</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book_list' %}?category=children">Children</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">

@@ -1,22 +1,186 @@
 {% extends "_base.html" %}
-
+{% load static %}
 {% block title %}{{ book.title }}{% endblock title %}
-
+{% block css %}<link rel="stylesheet" href="{% static "css/book_detail.css" %}">{% endblock css %}
 {% block content %}
-<div class="book-detail">
-    {% if book.cover %}
-    <img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.title }}">
-    {% endif %}
-    <h2><a href="">{{ book.title }}</a></h2>
-    <p>Author: {{ book.author }}</p>
-    <p>Price: ${{ book.price }}</p>
-    <div>
-        <h3>Reviews</h3>
-        <ul>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">Home</a> &gt; 
+        <a href="{% url 'book_list' %}">Books</a> &gt; 
+        <span>{{ book.title }}</span>
+    </div>
+
+    <div class="book-detail-container">
+        <div class="book-detail-left">
+            {% if book.cover %}
+            <div class="book-cover-container">
+                <img class="book-cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+            </div>
+            {% else %}
+            <div class="book-cover-container no-cover">
+                <div class="no-cover-text">No Cover Available</div>
+            </div>
+            {% endif %}
+
+            <div class="book-actions">
+                <button class="btn-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="book-detail-right">
+            <div class="book-header">
+                {% if book.category %}
+                <div class="book-category">{{ book.category }}</div>
+                {% endif %}
+                <h1 class="book-title">{{ book.title }}</h1>
+                <div class="book-author">By {{ book.author }}</div>
+
+                <div class="book-rating">
+                    <div class="stars">
+                        {% for i in "12345" %}
+                        <i class="fas fa-star"></i>
+                        {% endfor %}
+                    </div>
+                    <span class="rating-count">({{ book.reviews.count }} reviews)</span>
+                </div>
+            </div>
+
+            <div class="book-price-section">
+                <div class="book-price">${{ book.price }}</div>
+                {% if book.compare_price %}
+                <div class="book-compare-price">${{ book.compare_price }}</div>
+                <div class="book-discount">
+                    {{ book.discount_percentage }}% OFF
+                </div>
+                {% endif %}
+            </div>
+
+            {% if book.description %}
+            <div class="book-description">
+                <h3>Book Description</h3>
+                <p>{{ book.description }}</p>
+            </div>
+            {% endif %}
+
+            <div class="book-details-table">
+                <h3>Book Details</h3>
+                <table>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>{{ book.publisher|default:"Not Available" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Publication Date</th>
+                        <td>{{ book.publication_date|date:"F j, Y"|default:"Not Available" }}</td>
+                    </tr>
+                    <tr>
+                        <th>ISBN</th>
+                        <td>{{ book.isbn|default:"Not Available" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pages</th>
+                        <td>{{ book.pages|default:"Not Available" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Language</th>
+                        <td>{{ book.language|default:"English" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="book-reviews-section">
+        <h2>Customer Reviews</h2>
+
+        <div class="reviews-summary">
+            <div class="average-rating">
+                <div class="big-rating">4.5</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="rating-count">Based on {{ book.reviews.count }} reviews</div>
+            </div>
+
+            <div class="rating-breakdown">
+                <div class="rating-bar">
+                    <span class="rating-level">5 <i class="fas fa-star"></i></span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%"></div>
+                    </div>
+                    <span class="rating-percent">70%</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-level">4 <i class="fas fa-star"></i></span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 20%"></div>
+                    </div>
+                    <span class="rating-percent">20%</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-level">3 <i class="fas fa-star"></i></span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 5%"></div>
+                    </div>
+                    <span class="rating-percent">5%</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-level">2 <i class="fas fa-star"></i></span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 3%"></div>
+                    </div>
+                    <span class="rating-percent">3%</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-level">1 <i class="fas fa-star"></i></span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 2%"></div>
+                    </div>
+                    <span class="rating-percent">2%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="review-form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="Submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+
+        <div class="reviews-list">
+            {% if book.reviews.all %}
             {% for review in book.reviews.all %}
-            <li>{{ review.review }} ({{ review.author }})</li>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="reviewer-name">{{ review.author }}</div>
+                    </div>
+                </div>
+                <div class="review-rating">
+                    {% for i in "12345" %}
+                    <i class="fas fa-star"></i>
+                    {% endfor %}
+                </div>
+                <div class="review-content">
+                    {{ review.review }}
+                </div>
+            </div>
             {% endfor %}
-        </ul>
+            {% else %}
+            <div class="no-reviews">
+                <p>No reviews yet! Be the first to review this book.</p>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

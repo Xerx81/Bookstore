@@ -24,23 +24,23 @@
             </button>
             <div class="cards-container">
                 {% for book in book_list %}
-                <div class="card book-card">
-                    {% if book.cover %}
-                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
-                    {% else %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text text-muted">{{ book.author }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="book-price">${{ book.price }}</span>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
-                            </button>
+                    <a class="card book-card" style="text-decoration: none; color: inherit" href="{% url 'book_detail' book.id %}">
+                        {% if book.cover %}
+                        <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                        {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text text-muted">{{ book.author }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="book-price">${{ book.price }}</span>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </a>
                 {% endfor %}
             </div>
             <button class="scroll-button right">
@@ -60,50 +60,62 @@
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/fiction_don_quixote.jpg' %}" class="img-fluid w-100 h-100" alt="Fiction Category">
-                    <div class="category-overlay">
-                        <h3>Fiction</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=fiction">
+                        <img src="{% static 'images/fiction_don_quixote.jpg' %}" class="img-fluid w-100 h-100" alt="Fiction Category">
+                        <div class="category-overlay">
+                            <h3>Fiction</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/non_fiction.jpg' %}" class="img-fluid w-100 h-100" alt="Non-Fiction Category">
-                    <div class="category-overlay">
-                        <h3>Non-Fiction</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=non_fiction">
+                        <img src="{% static 'images/non_fiction.jpg' %}" class="img-fluid w-100 h-100" alt="Non-Fiction Category">
+                        <div class="category-overlay">
+                            <h3>Non-Fiction</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/mystery.png' %}" class="img-fluid w-100 h-100" alt="Mystery Category">
-                    <div class="category-overlay">
-                        <h3>Mystery</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=mystery">
+                        <img src="{% static 'images/mystery.png' %}" class="img-fluid w-100 h-100" alt="Mystery Category">
+                        <div class="category-overlay">
+                            <h3>Mystery</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/sci_fi.jpg' %}" class="img-fluid w-100 h-100" alt="Science Fiction Category">
-                    <div class="category-overlay">
-                        <h3>Science Fiction</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=sci_fi">
+                        <img src="{% static 'images/sci_fi.jpg' %}" class="img-fluid w-100 h-100" alt="Science Fiction Category">
+                        <div class="category-overlay">
+                            <h3>Science Fiction</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/biography.jpg' %}" class="img-fluid w-100 h-100" alt="Biography Category">
-                    <div class="category-overlay">
-                        <h3>Biography</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=biography">
+                        <img src="{% static 'images/biography.jpg' %}" class="img-fluid w-100 h-100" alt="Biography Category">
+                        <div class="category-overlay">
+                            <h3>Biography</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="category-card">
-                    <img src="{% static 'images/children.jpg' %}" class="img-fluid w-100 h-100" alt="Children's Books Category">
-                    <div class="category-overlay">
-                        <h3>Children's Books</h3>
-                    </div>
+                    <a href="{% url 'book_list' %}?category=children">
+                        <img src="{% static 'images/children.jpg' %}" class="img-fluid w-100 h-100" alt="Children's Books Category">
+                        <div class="category-overlay">
+                            <h3>Children's Books</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -120,23 +132,23 @@
             </button>
             <div class="cards-container">
                 {% for book in book_list %}
-                <div class="card book-card">
-                    {% if book.cover %}
-                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
-                    {% else %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text text-muted">{{ book.author }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="book-price">${{ book.price }}</span>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
-                            </button>
+                    <a class="card book-card" style="text-decoration: none; color: inherit" href="{% url 'book_detail' book.id %}">
+                        {% if book.cover %}
+                        <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                        {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text text-muted">{{ book.author }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="book-price">${{ book.price }}</span>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </a>
                 {% endfor %}
             </div>
             <button class="scroll-button right">
@@ -201,24 +213,24 @@
             </button>
             <div class="cards-container">
                 {% for book in book_list %}
-                <div class="card book-card">
-                    {% if book.cover %}
-                    <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
-                    {% else %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
-                    {% endif %}
-                    <div class="card-body">
-                        <span class="badge bg-danger mb-2">New</span>
-                        <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text text-muted">{{ book.author }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="book-price">${{ book.price }}</span>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-shopping-cart me-1"></i> Add to Cart
-                            </button>
+                    <a class="card book-card" style="text-decoration: none; color: inherit" href="{% url 'book_detail' book.id %}">
+                        {% if book.cover %}
+                        <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                        {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                        {% endif %}
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">New</span>
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text text-muted">{{ book.author }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="book-price">${{ book.price }}</span>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </a>
                 {% endfor %}
             </div>
             <button class="scroll-button right">

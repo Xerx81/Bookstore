@@ -1,11 +1,39 @@
 {% extends "_base.html" %}
-
-{% block title %}Books{% endblock title %}
-
+{% load static %}
+{% block title %}Search Results{% endblock title %}
+{% block css %}<link rel="stylesheet" href="{% static "css/book_list.css" %}">{% endblock css %}
 {% block content %}
-    {% for book in book_list %}
-        <div>
-            <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+    <section class="books-hero">
+        <div class="container">
+            {% if category_name %}
+            <h1>{{ category_name }}</h1>
+            {% else %}
+            <h1>All Books</h1>
+            {% endif %}
         </div>
-    {% endfor %}
-{% endblock %}
+    </section>
+
+    <main class="container">
+        <section class="book-grid">
+            {% for book in book_list %}
+            <a class="card book-card" style="text-decoration: none; color: inherit" href="{% url 'book_detail' book.id %}">
+                {% if book.cover %}
+                <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+                {% else %}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" class="card-img-top" alt="Book Cover">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text text-muted">{{ book.author }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="book-price">${{ book.price }}</span>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock content %}

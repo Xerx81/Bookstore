@@ -1,0 +1,22 @@
+.books-hero {
+    background: linear-gradient(135deg, #1a3c5a 0%, #2a5f8a 50%, #3a7ca9 100%);
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.books-hero h1 {
+    font-weight: 700;
+    text-align: center;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.book-card {
+    width: auto;
+}
