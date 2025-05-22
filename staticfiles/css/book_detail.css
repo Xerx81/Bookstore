@@ -1,0 +1,501 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.breadcrumbs {
+    margin-bottom: 30px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.book-detail-container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.book-detail-left {
+    flex: 0 0 300px;
+}
+
+.book-detail-right {
+    flex: 1;
+}
+
+.book-cover-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-cover {
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-cover-text {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-cart, .btn-wishlist {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-cart {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-cart:hover {
+    background-color: #219651;
+    transform: translateY(-2px);
+}
+
+.book-header {
+    margin-bottom: 30px;
+}
+
+.book-category {
+    background-color: #e74c3c;
+    color: white;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.book-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.book-author {
+    color: #7f8c8d;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.book-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stars {
+    color: #f39c12;
+}
+
+.rating-count {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.book-price-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.book-price {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #27ae60;
+}
+
+.book-compare-price {
+    text-decoration: line-through;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
+
+.book-discount {
+    background-color: #e74c3c;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.book-availability {
+    margin-left: auto;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.in-stock {
+    color: #27ae60;
+}
+
+.out-of-stock {
+    color: #e74c3c;
+}
+
+.book-description {
+    margin-bottom: 30px;
+}
+
+.book-description h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.book-description p {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.book-details-table h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.book-details-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.book-details-table th, .book-details-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.book-details-table th {
+    color: #7f8c8d;
+    font-weight: 600;
+    width: 30%;
+}
+
+.book-details-table td {
+    color: #2c3e50;
+}
+
+.book-reviews-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.book-reviews-section h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.reviews-summary {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.average-rating {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 0 0 200px;
+}
+
+.big-rating {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.average-rating .stars {
+    margin-bottom: 10px;
+}
+
+.rating-count {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.rating-breakdown {
+    flex: 1;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.rating-level {
+    flex: 0 0 70px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #f39c12;
+}
+
+.rating-percent {
+    flex: 0 0 50px;
+    text-align: right;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.review-form-toggle {
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.btn-write-review {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-write-review:hover {
+    background-color: #2980b9;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-avatar {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.review-date {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    margin-bottom: 10px;
+}
+
+.review-content {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 40px 0;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Book Card Styles (From the book_list.html) */
+.book-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.book-image {
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 15px;
+}
+
+.book-card .book-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.book-card .book-author {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.book-card .book-category {
+    margin-bottom: 10px;
+}
+
+.book-card .book-price {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.book-card .book-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-view, .book-card .btn-cart {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.8rem;
+}
+
+.btn-view {
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-view:hover {
+    background-color: #2980b9;
+}
+
+.book-card .btn-cart {
+    background-color: #27ae60;
+    color: white;
+}
+
+.book-card .btn-cart:hover {
+    background-color: #219651;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .book-detail-container {
+        flex-direction: column;
+    }
+
+    .book-detail-left {
+        flex: 0 0 auto;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .reviews-summary {
+        flex-direction: column;
+    }
+
+    .average-rating {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .related-books-slider {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .book-image {
+        height: 200px;
+    }
+}
+
