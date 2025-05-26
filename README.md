@@ -16,6 +16,8 @@ It’s not meant to be a polished product, but more of a learning project that h
 **Database:** Postgresql
 
 **Containerization:** Docker, Docker Compose
+
+
 ## Features
 
 - **User Authentication:** Secure login and registration system made using "Allauth".
@@ -30,27 +32,39 @@ It’s not meant to be a polished product, but more of a learning project that h
 Clone the project
 
 ```bash
-  git clone https://github.com/Xerx81/Bookstore.git
+git clone https://github.com/Xerx81/Bookstore.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd Bookstore
+cd Bookstore
 ```
 
 Build and start server
 
 ```bash
-  docker compose up -d --build
+docker compose up -d --build
 ```
 
 Apply database migrations
 
 ```bash
-  docker compose exec web python manage.py migrate
+docker compose exec web python manage.py migrate
 ```
+
 Go to link: http://localhost:8000
+
+
+## Usage
+
+Create super user
+```bash
+docker compose exec web python manage.py createsuperuser
+```
+
+Go to http://localhost:8000/admin login and add book data.
+
 
 ## Screenshots
 
@@ -65,4 +79,3 @@ Go to link: http://localhost:8000
 ![image](https://github.com/user-attachments/assets/c1c3ec40-0bdd-4621-ab45-97057c31f728)
 
 ![image](https://github.com/user-attachments/assets/aad7aef8-19c1-4b97-9c29-47a317527c15)
-
