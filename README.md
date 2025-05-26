@@ -1,4 +1,3 @@
-
 # Bookstore
 
 This project is a simple online bookstore built with Django which is result of the book *Django for Professionals*.
