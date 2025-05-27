@@ -1,11 +1,6 @@
 # Bookstore
 
-This project is a simple online bookstore built with Django which is result of the book *Django for Professionals*.
-
-The goal was to get comfortable with building a real-world Django app—handling things like user authentication, models, views, templates, along with Docker and Postresql.
-
-It’s not meant to be a polished product, but more of a learning project that helped me understand how everything fits together.
-
+A Django-powered web application for managing bookstore operations, featuring user authentication, book cataloging, and media integration.
 
 ## Tech Stack
 
